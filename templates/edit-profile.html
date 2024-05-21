@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/game.css" />
+    <link rel="stylesheet" href="../static/css/login.css">
+    <title>Number Guessing Game</title>
+</head>
+
+<body>
+    <header>
+        <details>
+            <summary></summary>
+            <nav class="menu">
+                <a href="/">Home</a>
+                <a href="/leaderboard">Leaderboard</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </details>
+    </header>
+    <main>
+        <section class="start">
+            <div class="banner">
+                <p class="title-large">Number Guessing Game</p>
+                <div class="user"></div>
+            </div>
+            <!-- page for editing user profile by user -->
+            <div class="banner-div">
+                <p class="text">Update user profile</p>
+                <form action="/edit" method="post" class="form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Nickname*</label><br>
+                        <input type="text" id="name" name="name" value="{{user.username}}" required autofocus />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email*</label><br>
+                        <input type="text" id="email" name="email" value="{{user.email}}" required />
+                        <input type="hidden" id="acctype" name="acctype" value="user"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Password*</label><br>
+                        <input type="file" id="image" name="image" />
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

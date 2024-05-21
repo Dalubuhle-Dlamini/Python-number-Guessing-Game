@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/game.css" />
+    <title>Number Guessing Game</title>
+  </head>
+
+  <body>
+    <header>
+      <details>
+        <summary></summary>
+        <nav class="menu">
+          <a href="/">Home</a>
+          <a href="/leaderboard">Leaderboard</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </details>
+    </header>
+    <main>
+      <section class="start">
+        <div class="banner">
+          <p class="title-large">Number Guessing Game</p>
+        </div>
+        <div class="banner-div">
+          <p class="text">Guess any number from 0-999</p>
+          <form action="/guessModerate" method="post" class="form">
+            <input
+              type="hidden"
+              id="number"
+              name="number"
+              value="{{session['number']}}"
+            />
+            <label for="guess">Enter a number:</label>
+            <input type="number" id="guess" name="guess" required autofocus />
+            <button type="submit">Guess</button>
+          </form>
+          <div>
+            <h4>Hint</h4>
+            {% if session['guesses-g'] == 0 %}
+            <p>Number is greater than: -</p>
+            {% else %}
+            <p>Number is greater than: {{session['guesses-g']}}</p>
+            {% endif %} {% if session['guesses-s'] == 0 %}
+            <p>Number is smaller than: -</p>
+            {% else %}
+            <p>Number is smaller than: {{session['guesses-s']}}</p>
+            {% endif %}
+            <p>{{message}}</p>
+          </div>
+        </div>
+        <div class="btn-div">
+          <div>
+            <a href="#" class="how-to-play popup-link">How To Play?</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="popup-overlay">
+      <div class="popup-content">
+        <h2>Instructions</h2>
+        <br />
+        <p>
+          This is a number guessing game where by you will try guess a number
+          between given range, you will be given a 10 tries to guess this number
+          and failure to guess the number will result to a loss.<br />
+          Give yourself a chance to be number one in the world
+        </p>
+        <a href="#" class="close-btn">X</a>
+      </div>
+    </div>
+    <script src="../static/javascript/script.js"></script>
+  </body>
+</html>

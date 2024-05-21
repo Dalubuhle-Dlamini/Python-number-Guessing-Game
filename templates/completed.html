@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/completed.css">
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Number Guessor Game</title>
+</head>
+
+<body>
+    <header>
+        <details>
+            <summary></summary>
+            <nav class="menu">
+                <a href="/">Home</a>
+                <a href="/leaderboard">Leaderboard</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </details>
+    </header>
+    <main>
+        <!-- when user wins this will show -->
+        {% if status == "win" %}
+        <section class="start">
+            <div class="banner">
+                <p class="title-large">Number Guessing Game</p>
+
+            </div>
+            <div class="congrats">
+                <h1>Congratulations!</h1>
+            </div>
+            <div class="banner">
+                <img src='../static/images/trophy.png' alt="trophy">
+            </div>
+            <div class="btn-div">
+                <div>
+                    <a href="/levels" class="game-link">Play Again</a><br>
+                </div>
+                <div>
+                    <!-- number of attempts and score will show here -->
+                    <p>You won in {{attempts}} attempts </p><br>
+                    <p>Your Score: {{score}}</p><br>
+                </div>
+                <div>
+                    <a href="/leaderboard" class="how-to-play">View Leaderboard</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- when user losses the below will show -->
+        {% elif status == "lose" %}
+        <section class="start">
+            <div class="banner">
+                <p class="title-large">
+                    Number Guessing Game
+                </p>
+            </div>
+            <div class="congrats">
+                <h1>You Lose number was {{ number }}</h1>
+            </div>
+            <div class="banner">
+                <img src='../static/images/sad-emoji.png' alt="sad">
+            </div>
+            <div class="btn-div">
+                <div>
+                    <a href="/levels" class="game-link">Play Again</a><br>
+                </div>
+                <div>
+                    <a href="/leaderboard" class="how-to-play">Leaderboard</a>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+    </main>
+
+    <script src="../static/javascript/congratulations.js"></script>
+</body>
+
+</html>

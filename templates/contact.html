@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/contact.css" />
+    <title>Number Guessing Game</title>
+</head>
+
+<body>
+    <header>
+        <details>
+            <summary></summary>
+            <nav class="menu">
+                <a href="/">Home</a>
+                <a href="/leaderboard">Leaderboard</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </details>
+    </header>
+    <main>
+        <section class="start">
+            <div class="banner">
+                <p class="title-large">Number Guessing Game</p>
+
+                <div class="user">
+                    {% if session['user'] == null %}
+                    <div class="login-links">
+                        <a href="/login" class="game-link">login</a> &nbsp;
+                        <a href="/register" class="game-link">signup</a>
+                    </div>
+                    {% else %}
+                    <div class="forms">
+                        <div class="nav">
+                            <ul class="ul">
+                                <li>
+                                    <span>{{session['user']}}</span>
+                                    {% if image == null %}
+                                    <img src="../static/images/profile.png" alt="" class="profile">
+                                    {% else %}
+                                    <img src="data:;base64,{{image}}" class="profile" />
+                                    {% endif %}
+                                    <ul>
+                                        <li class="name">{{name}}</li>
+                                        <li class="sub-item">
+                                            <i class="fa fa-edit"></i>
+                                            <p><a href="/profile" style="color: white;">View Profile</a></p>
+                                        </li>
+                                        <li class="sub-item">
+                                            <i class="fa fa-edit"></i>
+                                            <p><a href="/edit" style="color: white;">Update Profile</a></p>
+                                        </li>
+                                        <li class="sub-item">
+                                            <i class="fa fa-sign-out"></i>
+                                            <p><a href="/logout" style="color: white;">Logout</a></p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="banner-div">
+                <div class="container-form">
+                    <div class="contact-box">
+                        <div class="contact-left">
+                            <h3>Send Your Request</h3>
+                            <form action="">
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label for="">Name</label>
+                                        <input type="text" placeholder="Name Surname">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="">Phone</label>
+                                        <input type="text" placeholder="+268 766 35 980">
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label for="">Email</label>
+                                        <input type="email" placeholder="abc@gmail.com">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="">Subject</label>
+                                        <input type="text" placeholder="Write Demo">
+                                    </div>
+                                </div>
+
+                                <label for="">Message</label>
+                                <textarea rows="5" placeholder="Your Message..."></textarea>
+                                <button type="submit">Send</button>
+                            </form>
+                        </div>
+                        <div class="contact-right">
+                            <h3>Reach Us</h3>
+                            <table>
+                                <tr>
+                                    <td>Email</td>
+                                    <td><a href="mailto:contactus@example.com">contactus@example.com</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Phone</td>
+                                    <td><a href="tel:+26876635980">+268 766 35 980</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td>
+                                    <td>P.O. BOX 4239 Mbabane
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="col">
+
+                    <div class="feedback-form-overlay" id="feedbackFormOverlay" style="display: none;">
+                        <div class="feedback-form">
+                            <h2>Feedback Form</h2>
+                            <form action="/feedback" method="post">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" required>
+
+                                <label for="number">Number:</label>
+                                <input type="text" id="number" name="number" required>
+
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message" required></textarea>
+
+                                <button type="submit">Submit</button>
+                            </form>
+                            <a href="javascript:void(0)" class="feedback-close">X</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../static/javascript/script.js"></script>
+</body>
+
+
+</html>

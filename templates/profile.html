@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/leaderboard.css" />
+    <link rel="stylesheet" href="../static/css/profile.css" />
+    <title>Number Guessing Game</title>
+</head>
+
+<body>
+    <header>
+        <details>
+            <summary></summary>
+            <nav class="menu">
+                <a href="/">Home</a>
+                <a href="/leaderboard">Leaderboard</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </details>
+    </header>
+    <main>
+        <section class="start">
+            <div class="banner">
+                <p class="title-large">Number Guessing Game</p>
+
+                <div class="user">
+                    {% if session['user'] == null %}
+                    <div class="login-links">
+                        <a href="/login" class="game-link">login</a> &nbsp;
+                        <a href="/register" class="game-link">signup</a>
+                    </div>
+                    {% else %}
+                    <div class="forms">
+                        <div class="nav">
+                            <ul class="ul">
+                                <li>
+                                    <span>{{session['user']}}</span>
+                                    {% if image == null %}
+                                    <img src="../static/images/profile.png" alt="" class="profile">
+                                    {% else %}
+                                    <img src="data:;base64,{{image}}" class="profile" />
+                                    {% endif %}
+                                    <ul>
+                                        <li class="name">{{name}}</li>
+                                        <li class="sub-item">
+                                            <i class="fa fa-edit"></i>
+                                            <p><a href="/profile" style="color: white;">View Profile</a></p>
+                                        </li>
+                                        <li class="sub-item">
+                                            <i class="fa fa-edit"></i>
+                                            <p><a href="/edit" style="color: white;">Update Profile</a></p>
+                                        </li>
+                                        <li class="sub-item">
+                                            <i class="fa fa-sign-out"></i>
+                                            <p><a href="/logout" style="color: white;">Logout</a></p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="banner-div">
+                <hr>
+                <h2 style="text-align: center;">View Profile</h2>
+                <!-- this will show the details of user who is currently logged on -->
+                <div class="view-profile">
+                    <div class="details green">
+                        <p>Score</p>
+                        <p>{{user.games_score}} pts</p>
+                    </div>
+                    <div class="details pink">
+                        <p>Best Score</p>
+                        <p>{{user.highest_score}} pts</p>
+                    </div>
+                    <div class="details blue">
+                        <p>Games Played</p>
+                        <p>{{user.games_played}}</p>
+                    </div>
+                    <div class="details limegreen">
+                        <p>Games Won</p>
+                        <p>{{user.games_won}}</p>
+                    </div>
+                    <div class="details red">
+                        <p>Games Lost</p>
+                        <p>{{user.games_played - user.games_won}}</p>
+                    </div>
+                    <div class="details purple">
+                        <p>World Ranking</p>
+                        <p>{{user.position}}</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="btn-div">
+                <div>
+                    <a href="/leaderboard" class="game-link">Leaderboard</a><br>
+                </div>
+                <div>
+                    <a href="/levels" class="game-link">Play Game</a><br>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../static/javascript/script.js"></script>
+</body>
+
+</html>

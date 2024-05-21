@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/admin-users.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+        .success{
+            color: #029c02;
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <button class="toggle-btn" onclick="toggleSidebar()">
+                X
+            </button>
+            <ul>
+                <li>
+                    <a href="/admin"><i class="fas fa-chart-bar icon"></i>Dashboard</a>
+                </li>
+                <li>
+                    <a href="/admin-users"><i class="fas fa-users icon"></i>Users</a>
+                </li>
+                <li>
+                    <a href="/admin-feedback"><i class="fas fa-shopping-cart icon"></i>Notification</a>
+                </li>
+                <li>
+                    <a href="/logout"><i class="fas fa-shopping-cart icon"></i>Logout</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1>Admin Dashboard</h1>
+            <button class="toggle-btn" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="dashboard">
+                <div class="card table-container">
+                    <h2>Users</h2>
+                    <!-- this will only show when there is message for admin -->
+                    {% with messages=get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                            <p class="success">{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Account Type</th>
+                                <th>Games Played</th>
+                                <th>Games Won</th>
+                                <th>Score</th>
+                                <th>Highest Score</th>
+                                <th>Position</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- start of loop -->
+                            {% for user in users %}
+                            <form method="POST" action="/update">
+                            <tr>
+                                    <td>{{user.id}}
+                                        <!-- used for update and delete -->
+                                        <input type="hidden" value="{{user.id}}" name="id" id="id">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="name" id="name" value="{{user.username}}" required>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="email" id="email" value="{{user.email}}" required>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="acctype" id="acctype" value="{{user.acctype}}" required
+                                            style="width: 50px;">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="played" id="played" value="{{user.games_played}}"
+                                            required style="width: 40px;">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="won" id="won" value="{{user.games_won}}" required
+                                            style="width: 40px;">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="score" id="score" value="{{user.games_score}}"
+                                            required style="width: 40px;">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="hscore" id="hscore" value="{{user.highest_score}}"
+                                            required style="width: 40px;">
+                                    </td>
+                                    <td><input type="number" name="position" id="position" value="{{user.position}}"
+                                            required style="width: 40px;">
+                                    </td>
+                                    <td>
+                                        <!-- buttons -->
+                                        <button type="submit" class="btn">Update</button>
+                                        <a href="/delete/{{ user.id }}" class="btn delete">Delete</a>
+                                    </td>
+                                </tr>
+                            </form>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="button-container">
+                        <a href="/add-user">Add</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+    </script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,33 @@
+.text{
+    font-size: 23px;
+    margin-bottom: 30px;
+}
+
+.banner-div{
+    height: auto;
+}
+
+
+.form input{
+    width: 400px;
+    margin: 20px 0px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+@media screen and (max-width: 500px){
+    .banner-div{
+        width: 300px;
+    }
+
+    .title-large{
+        margin-top: 90px;
+    }
+
+    .form input{
+        max-width: 200px;
+    }
+}

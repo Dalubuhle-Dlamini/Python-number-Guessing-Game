@@ -1,0 +1,37 @@
+.details{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: 0.3rem 0.3rem #323232;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.green{
+    background-color: #008000;
+}
+
+.pink{
+    background-color: #c55469 !important;
+}
+.limegreen{
+    background-color: #32cd32 !important;
+}
+.purple{
+    background-color: #80007a !important;
+}
+
+.blue{
+    background-color: #0077ff !important;
+}
+
+.red{
+    background-color: #cf0505 !important;
+}

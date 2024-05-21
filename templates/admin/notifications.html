@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/admin-users.css">
+    <link rel="stylesheet" href="/static/css/admin-notification.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar" id="sidebar">
+      <button class="toggle-btn" onclick="toggleSidebar()">
+          X
+      </button>
+      <ul>
+        <li>
+            <a href="/admin"><i class="fas fa-chart-bar icon"></i>Dashboard</a>
+        </li>
+        <li>
+            <a href="/admin-users"><i class="fas fa-users icon"></i>Users</a>
+        </li>
+        <li>
+            <a href="/admin-feedback"><i class="fas fa-shopping-cart icon"></i>Notification</a>
+        </li>
+        <li>
+            <a href="/logout"><i class="fas fa-shopping-cart icon"></i>Logout</a>
+        </li>
+    </ul>
+  </div>
+    <div class="main-content">
+      <h1>Notifications</h1>
+      <div class="notifications">
+        <!-- looping through the feedback table using for loop-->
+        {%for feed in feedback%}
+        <div class="notification">
+          <div class="title">{{feed.username}}</div>
+          <div class="timestamp">{{feed.sent_at}}</div>
+          <div class="message" style="margin-bottom: 20px; ">{{feed.message}}</div>
+          <a href="/delete-feedback/{{ feed.id }}" class="btn delete">Delete</a>
+        </div>
+        {%endfor%}
+        <!-- end of for loop -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

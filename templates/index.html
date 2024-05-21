@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <title>Number Guessing Game</title>
+</head>
+
+<body>
+    <header>
+        <details>
+            <summary></summary>
+            <nav class="menu">
+                <a href="/">Home</a>
+                <a href="/leaderboard">Leaderboard</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </details>
+    </header>
+    <main>
+        <section class="start">
+            <div class="banner">
+                <p class="title-large">Number Guessing Game</p>
+
+                <div class="user">
+                    <!-- if user is not logged on then the login buttons will be shown -->
+                    {% if session['user'] == null %}
+                    <div class="login-links">
+                        <a href="/login" class="game-link">login</a> &nbsp;
+                        <a href="/register" class="game-link">signup</a>
+                    </div>
+                    {% else %}
+                    <!-- this will show when user is logged on -->
+                    <div class="forms">
+                        <div class="nav">
+                            <ul class="ul">
+                                <li>
+                                    <span>{{session['user']}}</span>
+                                    {% if image == null %}
+                                    <img src="../static/images/profile.png" alt="" class="profile">
+                                    {% else %}
+                                    <img src="data:;base64,{{image}}" class="profile" />
+                                    {% endif %}
+                                    <ul>
+                                        <li class="name">{{name}}</li>
+                                        <li class="sub-item">
+                                            <i class="fa fa-edit"></i>
+                                            <p><a href="/profile" style="color: white;">View Profile</a></p>
+                                        </li>
+                                        <li class="sub-item">
+                                            <i class="fa fa-edit"></i>
+                                            <p><a href="/edit" style="color: white;">Update Profile</a></p>
+                                        </li>
+                                        <li class="sub-item">
+                                            <i class="fa fa-sign-out"></i>
+                                            <p><a href="/logout" style="color: white;">Logout</a></p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <!-- end of if statement -->
+                </div>
+
+            </div>
+            <div class="banner-div">
+                <img src="../static/images/banner.png" alt="banner image" />
+            </div>
+            <div class="btn-div">
+                <div><a href="/levels" class="game-link">Start Game</a><br /></div>
+                <div>
+                    <a href="#" class="how-to-play popup-link">How To Play?</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="col">
+                    <!-- feedback form details -->
+                    <div class="feedback-form-overlay" id="feedbackFormOverlay" style="display: none;">
+                        <div class="feedback-form">
+                            <h2>Feedback Form</h2>
+                            <form action="/feedback" method="post">
+                                <label for="name">Name:</label>
+                                <!-- if user is logged on then his name will be shown in form -->
+                                {% if session['user'] %}
+                                <input type="hidden" id="name" name="name" value="{{session['user']}}" required>
+                                {% else %}
+                                <input type="text" id="name" name="name" required>
+                                {% endif %}
+                                <label for="number">Number:</label>
+                                <input type="text" id="number" name="number" required>
+
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message" required></textarea>
+
+                                <button type="submit">Submit</button>
+                            </form>
+                            <a href="javascript:void(0)" class="feedback-close">X</a>
+                        </div>
+                    </div>
+                    <p class="copyright">
+                    &copy; 2023 DaBaMaLi Group. All rights reserved. To send feeback click <a href="#"
+                        id="feedbackForm">here</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <h2>Instructions</h2><br>
+            <p>
+                This is a number guessing game where by you will try guess a number between given range,
+                you will be given a 10 tries to guess this number and failure to guess the number will
+                result to a loss.<br>
+                Give yourself a chance to be number one in the world
+            </p>
+            <a href="#" class="close-btn">X</a>
+        </div>
+    </div>
+
+
+
+    <script src="../static/javascript/script.js"></script>
+</body>
+
+
+</html>

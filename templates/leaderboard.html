@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/leaderboard.css" />
+    <title>Number Guessing Game</title>
+  </head>
+
+  <body>
+    <header>
+      <details>
+        <summary></summary>
+        <nav class="menu">
+            <a href="/">Home</a>
+            <a href="/leaderboard">Leaderboard</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </details>
+    </header>
+    <main>
+      <section class="start">
+        <div class="banner">
+          <p class="title-large">Number Guessing Game</p>
+
+          <div class="user">
+              {% if session['user'] == null %}
+              <div class="login-links">
+                  <a href="/login" class="game-link">login</a> &nbsp;
+                  <a href="/register" class="game-link">signup</a>
+              </div>
+              {% else %}
+              <div class="forms">
+                  <div class="nav">
+                      <ul class="ul">
+                          <li>
+                              <span>{{session['user']}}</span>
+                              {% if image == null %}
+                              <img src="../static/images/profile.png" alt="" class="profile">
+                              {% else %}
+                              <img src="data:;base64,{{image}}" class="profile" />
+                              {% endif %}
+                              <ul>
+                                  <li class="name">{{name}}</li>
+                                  <li class="sub-item">
+                                      <i class="fa fa-edit"></i>
+                                      <p><a href="/profile" style="color: white;">View Profile</a></p>
+                                  </li>
+                                  <li class="sub-item">
+                                      <i class="fa fa-edit"></i>
+                                      <p><a href="/edit" style="color: white;">Update Profile</a></p>
+                                  </li>
+                                  <li class="sub-item">
+                                      <i class="fa fa-sign-out"></i>
+                                      <p><a href="/logout" style="color: white;">Logout</a></p>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              {% endif %}
+          </div>
+
+      </div>
+        <div class="banner-div">
+            <hr>
+            <h2 style="text-align: center;">Leaderboard (top 10)</h2>
+          <div class="user-board-div">
+            <!-- looping through leaderboard -->
+            {% for user in leaderboard %}
+            <div class="users-board">
+                {%if user.username == session['user']%}
+                <div class="number" style="background-color: #80007a;">
+                    <!-- position of user will be shown here -->
+                    {{user.position}}
+                </div>
+                {%else%}
+                <div class="number pink">
+                    <!-- position of user will be shown here -->
+                    {{user.position}}
+                </div>
+                {%endif%}
+                <div class="name">
+                    <!-- user name will be shown -->
+                    {%if user.username == session['user']%}
+                    <p style="color: #80007a;">{{user.username}}</p>
+                    {%else%}
+                    {{user.username}}
+                    {%endif%}
+                </div>
+                <div class="points">
+                    <!-- total score of user -->
+                    <p>{{user.games_score}} points</p>
+                </div>
+              </div>
+              {%endfor%}
+          </div>
+        </div>
+        <div class="btn-div">
+            <div>
+                <a href="/profile" class="game-link">Profile</a><br>
+            </div>
+            <div>
+                <a href="/levels" class="game-link">Play Game</a><br>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+  </body>
+</html>

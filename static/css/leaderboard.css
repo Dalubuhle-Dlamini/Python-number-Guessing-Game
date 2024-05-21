@@ -1,0 +1,119 @@
+.title-large{
+    margin-top: 50px;
+}
+
+.top-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 100px;
+}
+
+.position{
+    margin: 0 20px;
+    position: relative;
+}
+
+.position .number{
+    height: 30px;
+    width: 30px;
+    background-color: #00c400;
+    border: solid 1px #000;
+    box-shadow: 0.15rem 0.15rem #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    right: 20px;
+}
+
+.position img{
+    width: 90px;
+    height: 90px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.points{
+    background: #323232;
+    color: #fff;
+    width: 100px;
+    height: 30px;
+    padding-top: 5px;
+    text-align: center;
+    border: solid 1px #000;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: 0.3rem 0.3rem #000;
+}
+
+
+hr{
+    width: 500px;
+    margin: 50px 0;
+    border: solid 4px #000;
+}
+
+.users-board{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.users-board .number{
+    font-size: 25px;
+    height: 50px;
+    width: 50px;
+    background-color: #c4000a;
+    border: solid 1px #000;
+    box-shadow: 0.2rem 0.2rem #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    font-size: 600;
+}
+
+.name{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.btn-div{
+    margin: 50px auto;
+}
+
+@media screen and (max-width: 600px){
+    .banner-div{
+        width: 300px;
+    }
+
+    hr{
+        display: none;
+    }
+
+    .title-large{
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+
+    .form input{
+        max-width: 200px;
+    }
+}

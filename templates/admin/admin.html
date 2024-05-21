@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar" id="sidebar">
+      <button class="toggle-btn" onclick="toggleSidebar()">
+          X
+      </button>
+      <ul>
+          <li>
+              <a href="/admin"><i class="fas fa-chart-bar icon"></i>Dashboard</a>
+          </li>
+          <li>
+              <a href="/admin-users"><i class="fas fa-users icon"></i>Users</a>
+          </li>
+          <li>
+              <a href="/admin-feedback"><i class="fas fa-shopping-cart icon"></i>Notification</a>
+          </li>
+          <li>
+              <a href="/logout"><i class="fas fa-shopping-cart icon"></i>Logout</a>
+          </li>
+      </ul>
+  </div>
+    <div class="main-content">
+      <h1>Admin Dashboard</h1>
+      <div class="dashboard">
+        <a href="/admin-user" style="color: #000; text-decoration: none;">
+          <div class="card">
+            <h2>Users</h2>
+            <!-- this will get the number of users -->
+            <p>Total: {{ users|length }}</p>
+          </div>
+        </a>
+        <a href="/admin-feedback" style="color: #000; text-decoration: none;">
+          <div class="card">
+            <h2>Feedback</h2>
+            <!-- this will get the numbe rof messages -->
+            <p>Total Messages: {{ feedback|length }}</p>
+          </div>
+        </a>
+        <div class="card">
+          <h2>Games</h2>
+          <!-- this is the total number of games played by all users -->
+          <p>Total Played: {{total}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

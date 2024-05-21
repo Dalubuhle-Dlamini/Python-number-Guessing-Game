@@ -1,0 +1,34 @@
+.content {
+    padding: 20px;
+  }
+
+  .notifications {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .notification {
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .notification .title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .notification .timestamp {
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .notification .message {
+    color: #444;
+    line-height: 1.4;
+  }
